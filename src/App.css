@@ -1,0 +1,59 @@
+header.appbar {
+  position: sticky;
+  top: 0;
+  background: rgba(15, 20, 42, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+
+.appbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.brand-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary), var(--success));
+  box-shadow: 0 6px 18px rgba(124,77,255,0.35);
+}
+
+nav.menu { display: flex; gap: 8px; }
+.menu a { color: var(--text); text-decoration: none; padding: 8px 10px; border-radius: 8px; }
+.menu a:hover { background: rgba(255,255,255,0.06); }
+
+main.page { padding-top: 16px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.hero .title { font-size: 36px; margin: 0 0 8px; }
+.hero .subtitle { margin: 0 0 18px; }
+
+.grid { display: grid; gap: 16px; }
+.grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.stat {
+  background: linear-gradient(180deg, rgba(124,77,255,0.08), transparent);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.status-card.success { border-left: 4px solid var(--success); }
+.status-card.error { border-left: 4px solid var(--danger); }
