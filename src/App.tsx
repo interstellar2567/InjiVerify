@@ -4,10 +4,12 @@ import './App.css';
 import Home from "./pages/Home";
 import Logs from "./pages/Logs";
 import QRScanner from "./components/QRScanner";
+import ConnectivityStatus from "./components/ConnectivityStatus";
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ConnectivityStatus />
       <header className="appbar">
         <div className="container appbar-inner">
           <div className="brand">

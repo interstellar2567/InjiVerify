@@ -3,10 +3,32 @@ export interface VerificationResult {
   message?: string;
 }
 
-export async function verifyCredential(_qrData: string): Promise<VerificationResult> {
-  // TODO: integrate @mosip/inji-verify when available
-  return { isValid: false, message: 'SDK not integrated yet' };
+export async function verifyCredential(qrData: string): Promise<VerificationResult> {
+  try {
+    const response = await fetch('http://localhost:8080/verify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ vc: qrData }),
+    });
+
+    if (!response.ok) {
+      return { isValid: false, message: `Verification failed: ${response.statusText}` };
+    }
+
+    const data = await response.json();
+
+    return {
+      isValid: data.isValid,
+      message: data.message || (data.isValid ? 'Credential is valid' : 'Credential is invalid'),
+    };
+  } catch (error) {
+    return {
+      isValid: false,
+      message: 'Verification failed: ' + (error instanceof Error ? error.message : String(error)),
+    };
+  }
 }
 
 export default { verifyCredential };
-
